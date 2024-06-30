@@ -25,6 +25,5 @@ FairPrice est une application web basée sur Flask qui permet aux utilisateurs d
     cd fairprice
     ```
  **Lancer** :
- ```sh
     python main.py
-    ```
+    
