@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-SERP_API_KEY = 'f89c9cc417e54bc265889dc64de7a0311943c49a466610515ebd2d898426ce1b'
+SERP_API_KEY = 'your api key from serp api'
 
 class PriceHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
