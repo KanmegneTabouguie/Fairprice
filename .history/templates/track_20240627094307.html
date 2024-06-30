@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Track Prices</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Track Prices</h1>
+    <form id="trackForm">
+        <label for="product">Product:</label>
+        <input type="text" id="product" name="product">
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price">
+        <button type="submit">Track</button>
+    </form>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

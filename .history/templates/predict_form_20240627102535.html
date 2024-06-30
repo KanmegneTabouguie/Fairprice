@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict Prices</title>
+</head>
+<body>
+    <h1>Predict Prices</h1>
+    <form method="POST" action="{{ url_for('predict_price') }}">
+        <label for="product">Product:</label>
+        <input type="text" id="product" name="product">
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>

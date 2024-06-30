@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict Prices</title>
+</head>
+<body>
+    <h1>Predict Prices</h1>
+    <form id="predictForm">
+        <label for="product">Product:</label>
+        <input type="text" id="product" name="product">
+        <button type="submit">Predict</button>
+    </form>
+    <p id="prediction"></p>
+
+    <script>
+        document.getElementById('predictForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const product = document.getElementById('product').value;
+
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ product })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.predicted_price) {
+                    document.getElementById('prediction').innerText = `Predicted Price: ${data.predicted_price}`;
+                } else {
+                    document.getElementById('prediction').innerText = data.error;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

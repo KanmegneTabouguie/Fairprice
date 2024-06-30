@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Predictions</h1>
+<h2>Products with Predictions:</h2>
+<ul>
+{% for product in products %}
+    <li><a href="{{ url_for('view_product_predictions', product=product) }}">{{ product }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

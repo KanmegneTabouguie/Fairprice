@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Price History for {{ product }}</h1>
+<ul>
+{% for price in prices %}
+    <li>{{ price.timestamp }} - ${{ price.price }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

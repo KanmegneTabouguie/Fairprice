@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Price History</title>
+</head>
+<body>
+    <h1>Price History for {{ product }}</h1>
+    <ul>
+    {% for price in prices %}
+        <li>{{ price.timestamp }} - ${{ price.price }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

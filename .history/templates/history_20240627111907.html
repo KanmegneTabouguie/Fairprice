@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Price History for {{ product }}</h1>
+<canvas id="priceHistoryChart"
+        data-price-labels="{{ prices | map(attribute='timestamp') | join(', ') }}"
+        data-price-data="{{ prices | map(attribute='price') | join(', ') }}"
+        data-prediction-labels="{{ predictions | map(attribute='timestamp') | join(', ') }}"
+        data-prediction-data="{{ predictions | map(attribute='predicted_price') | join(', ') }}">
+</canvas>
+<ul>
+{% for price in prices %}
+    <li>{{ price.timestamp }} - ${{ price.price }}</li>
+{% endfor %}
+</ul>
+<h2>Predictions:</h2>
+<ul>
+{% for prediction in predictions %}
+    <li>{{ prediction.timestamp }} - ${{ prediction.predicted_price }}</li>
+{% endfor %}
+</ul>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const chartElement = document.getElementById('priceHistoryChart');
+    
+    const priceLabels = chartElement.getAttribute('data-price-labels').split(', ');
+    const priceData = chartElement.getAttribute('data-price-data').split(', ').map(Number);
+    const predictionLabels = chartElement.getAttribute('data-prediction-labels').split(', ');
+    const predictionData = chartElement.getAttribute('data-prediction-data').split(', ').map(Number);
+
+    const combinedLabels = priceLabels.concat(predictionLabels);
+    const combinedPriceData = priceData.concat(Array(predictionLabels.length).fill(null));
+    const combinedPredictionData = Array(priceLabels.length).fill(null).concat(predictionData);
+
+    new Chart(chartElement.getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: combinedLabels,
+            datasets: [
+                {
+                    label: 'Price',
+                    data: combinedPriceData,
+                    borderColor: 'blue',
+                    fill: false,
+                },
+                {
+                    label: 'Predicted Price',
+                    data: combinedPredictionData,
+                    borderColor: 'red',
+                    fill: false,
+                }
+            ]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day'
+                    }
+                },
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

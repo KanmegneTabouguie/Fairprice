@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles can be added here */
+        .call-to-action {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .features {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #e0e0e0;
+        }
+        .features ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        .features li {
+            display: inline-block;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="call-to-action">
+            <h1>Welcome to Fair Price App</h1>
+            <p>Find, track, and predict prices effortlessly with our powerful tools.</p>
+            <a href="{{ url_for('get_started') }}" class="button">Get Started</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('compare_prices') }}">Compare Prices</a></li>
+                <li><a href="{{ url_for('track_price') }}">Track Prices</a></li>
+                <li><a href="{{ url_for('predict_price') }}">Predict Prices</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+        
+        <div class="features">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Compare Prices: Quickly compare prices from different sources.</li>
+                <li>Track Prices: Monitor price changes over time for items you care about.</li>
+                <li>Predict Prices: Utilize advanced algorithms to forecast future prices.</li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Fair Price</p>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compare Prices</title>
+</head>
+<body>
+    <h1>Compare Prices</h1>
+    <form method="GET" action="{{ url_for('compare_prices') }}">
+        <label for="query">Product Query:</label>
+        <input type="text" id="query" name="query">
+        <button type="submit">Compare</button>
+    </form>
+    {% if prices %}
+        <h2>Results:</h2>
+        <ul>
+        {% for price in prices %}
+            <li>{{ price.title }} - {{ price.price }} - <a href="{{ price.link }}">Buy</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

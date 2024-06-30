@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2>Compare Prices</h2>
+        <form id="compareForm">
+            <div class="form-group">
+                <label for="query">Product</label>
+                <input type="text" class="form-control" id="query" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <div id="results" class="mt-4"></div>
+    </div>
+</div>
+{% endblock %}

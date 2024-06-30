@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Predictions for {{ product }}</h1>
+<ul>
+{% for prediction in predictions %}
+    <li>{{ prediction.timestamp }} - ${{ prediction.predicted_price }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

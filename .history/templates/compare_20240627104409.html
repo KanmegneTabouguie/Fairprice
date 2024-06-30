@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Compare Prices</h1>
+<form method="GET" action="{{ url_for('compare_prices') }}">
+    <label for="query">Product Query:</label>
+    <input type="text" id="query" name="query" value="{{ query }}">
+    <button type="submit">Compare</button>
+</form>
+{% if prices %}
+    <h2>Results:</h2>
+    <ul>
+    {% for price in prices %}
+        <li>
+            <img src="{{ price.image }}" alt="{{ price.title }}" width="50" height="50">
+            {{ price.title }} - {{ price.price }} - <a href="{{ price.link }}">Buy</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

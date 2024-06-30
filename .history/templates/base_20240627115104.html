@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="home">
+    <h1>Welcome to Fair Price</h1>
+    <p>Compare, track, and predict product prices with ease.</p>
+    <a href="{{ url_for('compare_prices') }}" class="cta-button">Get Started</a>
+    <div class="features">
+        <h2>Features</h2>
+        <ul>
+            <li>Compare prices from multiple sources</li>
+            <li>Track historical prices</li>
+            <li>Predict future prices using advanced machine learning models</li>
+        </ul>
+    </div>
+    <div class="advantages">
+        <h2>Advantages</h2>
+        <ul>
+            <li>Save money by finding the best prices</li>
+            <li>Stay informed with up-to-date price data</li>
+            <li>Make smart purchasing decisions with price predictions</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+

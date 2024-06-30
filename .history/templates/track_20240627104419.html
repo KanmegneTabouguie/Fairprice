@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Track Prices</h1>
+<form method="POST" action="{{ url_for('track_price') }}">
+    <label for="product">Product:</label>
+    <input type="text" id="product" name="product">
+    <label for="price">Price:</label>
+    <input type="text" id="price" name="price">
+    <button type="submit">Track</button>
+</form>
+<h2>Tracked Products:</h2>
+<ul>
+{% for product in tracked_products %}
+    <li>{{ product.product }} - ${{ product.price }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

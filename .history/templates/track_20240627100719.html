@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Track Prices</title>
+</head>
+<body>
+    <h1>Track Prices</h1>
+    <form id="trackForm">
+        <label for="product">Product:</label>
+        <input type="text" id="product" name="product">
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price">
+        <button type="submit">Track</button>
+    </form>
+    <p id="message"></p>
+
+    <script>
+        document.getElementById('trackForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const product = document.getElementById('product').value;
+            const price = document.getElementById('price').value;
+            const token = localStorage.getItem('jwt_token');
+
+            fetch('/track', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({ product, price })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('message').innerText = data.message;
+            });
+        });
+    </script>
+</body>
+</html>

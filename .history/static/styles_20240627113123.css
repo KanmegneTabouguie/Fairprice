@@ -1,0 +1,80 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #2d3e50;
+    color: #fff;
+    padding: 1em 0;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li {
+    margin-right: 1em;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: #1a252f;
+    border-radius: 5px;
+}
+
+main {
+    flex: 1;
+    padding: 2em;
+    max-width: 800px;
+    margin: auto;
+}
+
+footer {
+    background-color: #2d3e50;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.flashes {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flashes li {
+    margin-bottom: 1em;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+.flashes .success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.flashes .danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
